@@ -9,6 +9,8 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
+import de.bht.fpa.mail.s749711.utilities.WatchDog;
+
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -38,6 +40,7 @@ public class Activator extends AbstractUIPlugin {
   @Override
   public void start(BundleContext context) throws Exception {
     super.start(context);
+    WatchDog.getInstance().applicationStart();
     plugin = this;
   }
 

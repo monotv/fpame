@@ -31,24 +31,39 @@
       </category>
       <command
             categoryId="de.bht.fpa.mail.s749711.fsnavigation.commands.category"
-            id="de.bht.fpa.mail.s749711.fsnavigation.commands.sampleCommand"
+            id="de.bht.fpa.mail.s749711.fsnavigation.commands.setBaseDirectory"
             name="Set Base Directory">
+      </command>
+      <command
+            categoryId="de.bht.fpa.mail.s749711.fsnavigation.commands.category"
+            id="de.bht.fpa.mail.s749711.fsnavigation.commands.history"
+            name="History">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
             class="de.bht.fpa.mail.s749711.fsnavigation.handlers.SetBaseDirectoryHandler"
-            commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.sampleCommand">
+            commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.setBaseDirectory">
+      </handler>
+      <handler
+            class="de.bht.fpa.mail.s749711.fsnavigation.handlers.OpenBaseDirectoryHandler"
+            commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.history">
       </handler>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.sampleCommand"
+            commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.setBaseDirectory"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+6">
+      </key>
+      <key
+            commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.history"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+7">
       </key>
    </extension>
    <extension
@@ -56,13 +71,19 @@
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               id="de.bht.fpa.mail.s749711.fsnavigation.menus.sampleMenu"
+               id="de.bht.fpa.mail.s749711.fsnavigation.menus.fsNavigation"
                label="FS Navigation"
                mnemonic="M">
             <command
-                  commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.sampleCommand"
-                  id="de.bht.fpa.mail.s749711.fsnavigation.menus.sampleCommand"
+                  commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.setBaseDirectory"
+                  id="de.bht.fpa.mail.s749711.fsnavigation.menus.setBaseDirectory"
                   mnemonic="S">
+            </command>
+            <command
+                  commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.history"
+                  id="de.bht.fpa.mail.s749711.fsnavigation.menus.history"
+                  mnemonic="H"
+                  style="push">
             </command>
          </menu>
       </menuContribution>
@@ -71,12 +92,18 @@
          <toolbar
                id="de.bht.fpa.mail.s749711.fsnavigation.toolbars.sampleToolbar">
             <command
-                  commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.sampleCommand"
+                  commandId="de.bht.fpa.mail.s749711.fsnavigation.commands.setBaseDirectory"
                   icon="icons/sample.gif"
-                  id="de.bht.fpa.mail.s749711.fsnavigation.toolbars.sampleCommand"
+                  id="de.bht.fpa.mail.s749711.fsnavigation.toolbars.SampleCommand"
                   tooltip="Say hello world">
             </command>
          </toolbar>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
       </menuContribution>
    </extension>
 

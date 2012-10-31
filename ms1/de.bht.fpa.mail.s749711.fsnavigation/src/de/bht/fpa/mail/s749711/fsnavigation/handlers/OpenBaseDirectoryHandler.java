@@ -1,17 +1,12 @@
 package de.bht.fpa.mail.s749711.fsnavigation.handlers;
 
-import java.io.File;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import de.bht.fpa.mail.s749711.items.DirectoryItem;
-import de.bht.fpa.mail.s749711.utilities.History;
-import de.bht.fpa.mail.s749711.utilities.WatchDog;
+import de.bht.fpa.mail.s749711.fsnavigation.dialogs.HistoryDialog;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -19,11 +14,11 @@ import de.bht.fpa.mail.s749711.utilities.WatchDog;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class SetBaseDirectoryHandler extends AbstractHandler {
+public class OpenBaseDirectoryHandler extends AbstractHandler {
   /**
    * The constructor.
    */
-  public SetBaseDirectoryHandler() {
+  public OpenBaseDirectoryHandler() {
   }
 
   /**
@@ -35,13 +30,9 @@ public class SetBaseDirectoryHandler extends AbstractHandler {
     IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
     // MessageDialog.openInformation(window.getShell(), "Fsnavigation",
     // "Hello, Eclipse world");
-    DirectoryDialog directoryDialog = new DirectoryDialog(window.getShell());
-    directoryDialog.setText("Set a base directory");
-    String selectedDiretory = directoryDialog.open();
-    if (selectedDiretory != null) {
-      History.getInstance().setHistory(selectedDiretory);
-      WatchDog.getInstance().setDirectoryItem(new DirectoryItem(new File(selectedDiretory)));
-    }
+
+    HistoryDialog historyDialog = new HistoryDialog(window.getShell());
+    historyDialog.open();
     return null;
   }
 }

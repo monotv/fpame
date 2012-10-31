@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 import de.bht.fpa.mail.s749711.items.DirectoryItem;
+import de.bht.fpa.mail.s749711.utilities.History;
 import de.bht.fpa.mail.s749711.utilities.WatchDog;
 
 public class NavigationView extends ViewPart implements Observer {
@@ -47,7 +48,14 @@ public class NavigationView extends ViewPart implements Observer {
   private Object createModel() {
     // Our root item is simply a dummy Object. Here you need to provide your own
     // root class.
-    File file = new File(System.getProperty("user.home"));
+    File file = null;
+    String[] history = History.getInstance().getHistory();
+    if (history != null && history.length > 0) {
+      file = new File(history[history.length - 1]);
+    }
+    if (file == null || !file.exists()) {
+      file = new File(System.getProperty("user.home"));
+    }
     return new DirectoryItem(file);
   }
 

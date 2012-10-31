@@ -29,4 +29,9 @@ public class WatchDog extends Observable {
     notifyObservers(this.baseDirectory);
   }
 
+  public void applicationStart() {
+    setChanged();
+    notifyObservers("app.start");
+  }
+
 }
